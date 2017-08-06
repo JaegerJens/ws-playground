@@ -4,21 +4,39 @@
 </head>
 <body>
     <h1>WebSocket example with express</h1>
-    <button onclick="stopMonitor()">Stop!</button>
-    <script type="text/javascript">
+    
+    <h2>Network status</h2>
+    <p>
+        Current: <span id="quality">?</span><br>
+        Ping: <span id="ping">?</span><br>
+        <button onclick="stopMonitor()">Stop!</button>
+    </p>
+
+<script type="text/javascript">
+
+function showStatus(status) {
+    console.log(status);
+    const quality = document.getElementById("quality");
+    const ping = document.getElementById("ping");
+    quality.innerText = status.status;
+    ping.innerText = status.duration;
+}
+
+
 const loc = `ws://localhost:${window.location.port}`;
 const ws = new WebSocket(loc);
 ws.onopen = () => {
     ws.send("Hello server from web browser");
 };
 ws.onmessage = (event) => {
-    console.log(event.data);
+    const status = JSON.parse(event.data);
+    showStatus(status);
 };
 
 function stopMonitor() {
     console.log("STOP MONITOR!!!");
     ws.send("stop");
 }
-    </script>
+</script>
 </body>
 </html>
