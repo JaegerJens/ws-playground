@@ -27,6 +27,14 @@ wss.on('connection', function connection(ws, req) {
             observer.isCanceled = true;
         }
     });
+    ws.on("error", err => {
+        console.error(err)
+        observer.isCanceled = true;
+    });
+    ws.on("close", () => {
+        console.log("WS closed!")
+        observer.isCanceled = true;
+    });
 
     function sendObject(obj) {
         let msg = JSON.stringify(obj);

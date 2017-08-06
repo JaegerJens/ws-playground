@@ -4,6 +4,7 @@
 </head>
 <body>
     <h1>WebSocket example with express</h1>
+    <button onclick="stopMonitor()">Stop!</button>
     <script type="text/javascript">
 const loc = `ws://localhost:${window.location.port}`;
 const ws = new WebSocket(loc);
@@ -13,6 +14,11 @@ ws.onopen = () => {
 ws.onmessage = (event) => {
     console.log(event.data);
 };
+
+function stopMonitor() {
+    console.log("STOP MONITOR!!!");
+    ws.send("stop");
+}
     </script>
 </body>
 </html>
