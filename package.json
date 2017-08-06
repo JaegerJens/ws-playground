@@ -1,0 +1,16 @@
+{
+  "name": "ws-playground",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "Jens Jaeger",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.3",
+    "ws": "^3.1.0"
+  }
+}
