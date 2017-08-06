@@ -18,7 +18,7 @@ wss.on('connection', function connection(ws, req) {
         console.log(`received: ${message}`);
     });
 
-    ws.send('Hello world');
+    ws.send('Hello web browser (sender: server)');
 });
 
 server.listen(port, () => console.log(`Web server listening on http://localhost:${port}`));
